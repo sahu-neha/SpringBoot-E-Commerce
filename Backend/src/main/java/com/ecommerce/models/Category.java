@@ -4,9 +4,12 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -26,12 +29,11 @@ public class Category {
 
 	@NotBlank(message = "Category name is required")
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING) // MEN, WOMEN, KIDS, UNISEX
 	private CategoryType categoryName;
 
 	@Column(nullable = false)
-	private List<SubCategory> subcategories;
-
-	@Column(nullable = false)
+	@OneToMany(mappedBy = "category")
 	private List<Products> products;
 
 }

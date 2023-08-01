@@ -1,8 +1,0 @@
-1. Customer (enum = role)
-2. Product (enum = subCategory)
-3. Category (enum = categoryType)
-4. Order
-/* 5. OrderDetails */ on hold.
-6. Cart
-7. Review
-8. Wishlist

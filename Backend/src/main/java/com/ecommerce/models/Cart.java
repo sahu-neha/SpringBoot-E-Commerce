@@ -1,7 +1,5 @@
 package com.ecommerce.models;
 
-import java.util.List;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +29,7 @@ public class Cart {
 
 	@OneToMany(mappedBy = "cartItems")
 	@Column(nullable = false)
-	private List<Products> products;
+	private Products products;
 
 	@Column(nullable = false)
 	private Integer quantity;

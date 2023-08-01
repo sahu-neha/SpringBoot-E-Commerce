@@ -65,12 +65,12 @@ public class Products {
 	@Positive(message = "Price must be positive")
 	private Double sellingPrice;
 
+	@ManyToOne
 	@NotBlank(message = "Product type is required")
-	@Enumerated(EnumType.STRING)
 	private SubCategory subCategory;
 
 	@ManyToOne
-	@JoinColumn(name = "categoryId", nullable = false)
+	@JoinColumn(name = "category", nullable = false)
 	private Category category;
 
 	@ManyToOne

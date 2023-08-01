@@ -29,14 +29,8 @@ public class Orders {
 	@Column(nullable = false)
 	private Customers customer;
 
-	@OneToMany(mappedBy = "orders")
+	@OneToMany(mappedBy = "order")
 	@Column(nullable = false)
-	private List<Products> products;
-
-	@Column(nullable = false)
-	private Integer quantity;
-
-	@Column(nullable = false)
-	private Double totalPrice;
+	private List<Cart> carts;
 
 }
