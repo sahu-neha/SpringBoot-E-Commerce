@@ -3,8 +3,7 @@ Built with Spring Boot, this e-commerce platform offers scalability and rich fea
 
 # Clothverse E-Commerce Platform
 
-  ![Online Shopping Product Promotion - Banner](https://github.com/sahu-neha/SpringBoot-E-Commerce/assets/109987397/42b6a6fb-6176-4e5d-97be-60f195f877ed)
-
+  ![Online Shopping Product Promotion - Banner](https://github.com/sahu-neha/SpringBoot-E-Commerce/assets/109987397/354308c2-467e-4a72-8c33-155f0a2cffa1)
 
 ## Table of Contents
 
