@@ -28,7 +28,7 @@ public class Wishlist {
 	@Column(nullable = false)
 	private Customers customer;
 
-	@OneToMany(mappedBy = "orders")
+	@OneToMany(mappedBy = "wishlist")
 	@Column(nullable = false)
 	private List<Products> products;
 }

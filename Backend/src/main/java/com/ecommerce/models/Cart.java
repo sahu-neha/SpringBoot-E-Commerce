@@ -6,16 +6,18 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 @Table(name = "cart")
 public class Cart {
 
@@ -27,14 +29,13 @@ public class Cart {
 	@Column(nullable = false)
 	private Customers customer;
 
-	@OneToMany(mappedBy = "cartItems")
+	@OneToOne
 	@Column(nullable = false)
 	private Products products;
 
 	@Column(nullable = false)
 	private Integer quantity;
-
-	@Column(nullable = false)
-	private Double totalPrice;
+	
+	private Boolean isDelivered;
 
 }

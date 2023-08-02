@@ -1,6 +1,9 @@
 package com.ecommerce.models;
 
-import java.util.List;
+import java.util.Date;
+import java.util.Set;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +13,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +37,22 @@ public class Orders {
 
 	@OneToMany(mappedBy = "order")
 	@Column(nullable = false)
-	private List<Cart> carts;
+	private Set<Cart> carts;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false, updatable = false)
+	private Date orderDate;
+
+	@Column(nullable = false)
+	private Date deliveryDate;
+
+	@ColumnDefault(value = "0")
+	private Boolean isDelivered;
+
+	@ColumnDefault(value = "0")
+	private Boolean isPaid;
+
+	@Positive
+	private Double totalOrderAmount;
 
 }

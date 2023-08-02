@@ -1,11 +1,10 @@
 package com.ecommerce.models;
 
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +12,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
@@ -64,6 +65,14 @@ public class Products {
 	@Column(nullable = false)
 	@Positive(message = "Price must be positive")
 	private Double sellingPrice;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false, updatable = false)
+	private Date dateEntered;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	private Date dateUpdated;
 
 	@ManyToOne
 	@NotBlank(message = "Product type is required")
@@ -81,5 +90,8 @@ public class Products {
 
 	@OneToMany(mappedBy = "product")
 	private Reviews reviews;
+	
+	@ManyToOne
+	private Wishlist wishlist;
 
 }
