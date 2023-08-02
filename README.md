@@ -24,7 +24,7 @@ Built with Spring Boot, this e-commerce platform offers scalability and rich fea
 
 ## Introduction
 
-SuperEats is a robust and scalable e-commerce platform built with Spring Boot, tailored to meet the dynamic needs of online businesses. It provides rich RESTful APIs, seamless database management through Spring Data JPA, and top-notch security with Spring Security. The platform is integrated with MySQL for efficient data storage and Swagger for comprehensive API documentation.
+Clothverse is a robust and scalable e-commerce platform built with Spring Boot, tailored to meet the dynamic needs of online businesses. It provides rich RESTful APIs, seamless database management through Spring Data JPA, and top-notch security with Spring Security. The platform is integrated with MySQL for efficient data storage and Swagger for comprehensive API documentation.
 
 <!--
 
