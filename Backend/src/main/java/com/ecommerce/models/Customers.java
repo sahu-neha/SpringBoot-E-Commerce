@@ -1,6 +1,9 @@
 package com.ecommerce.models;
 
 import java.util.Date;
+import java.util.Objects;
+
+import org.hibernate.annotations.ColumnDefault;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,9 +12,11 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.criteria.Order;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -70,6 +75,9 @@ public class Customers {
 	@NotBlank(message = "Password is required")
 	private String password;
 
+	@ColumnDefault(value = "0")
+	private Boolean isDeleted;
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false, updatable = false)
 	private Date dateEntered;
@@ -81,5 +89,31 @@ public class Customers {
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false)
 	private Role role = Role.ROLE_USER;
+
+	@OneToMany(mappedBy = "customer")
+	private Cart cart;
+
+	@OneToMany(mappedBy = "customer")
+	private Order order;
+
+	@OneToMany(mappedBy = "customer")
+	private Wishlist wishlist;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(customerId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customers other = (Customers) obj;
+		return Objects.equals(customerId, other.customerId);
+	}
 
 }

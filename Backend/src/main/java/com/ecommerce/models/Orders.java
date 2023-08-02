@@ -1,6 +1,7 @@
 package com.ecommerce.models;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Set;
 
 import org.hibernate.annotations.ColumnDefault;
@@ -54,5 +55,22 @@ public class Orders {
 
 	@Positive
 	private Double totalOrderAmount;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(orderId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Orders other = (Orders) obj;
+		return Objects.equals(orderId, other.orderId);
+	}
 
 }

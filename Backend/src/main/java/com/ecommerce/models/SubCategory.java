@@ -1,6 +1,6 @@
 package com.ecommerce.models;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +28,6 @@ public class SubCategory {
 	private String subCategoryName;
 
 	@OneToMany(mappedBy = "subCategory")
-	private List<Products> products;
+	private Set<Products> products;
 
 }

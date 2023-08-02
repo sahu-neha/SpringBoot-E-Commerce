@@ -2,6 +2,7 @@ package com.ecommerce.models;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
@@ -65,7 +67,7 @@ public class Products {
 	@Column(nullable = false)
 	@Positive(message = "Price must be positive")
 	private Double sellingPrice;
-	
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false, updatable = false)
 	private Date dateEntered;
@@ -82,16 +84,30 @@ public class Products {
 	@JoinColumn(name = "category", nullable = false)
 	private Category category;
 
-	@ManyToOne
-	private Orders orders;
-
-	@ManyToOne
+	@OneToOne
 	private Cart cartItems;
 
 	@OneToMany(mappedBy = "product")
 	private Reviews reviews;
-	
+
 	@ManyToOne
 	private Wishlist wishlist;
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(productId);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Products other = (Products) obj;
+		return Objects.equals(productId, other.productId);
+	}
 
 }

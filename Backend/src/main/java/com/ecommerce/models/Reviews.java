@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,8 +24,12 @@ public class Reviews {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long reviewId;
 
+	@Positive
+	@Size(min = 1, max = 5)
+	private Integer rating;
+
 	@Lob
-	@Size(max = 500, message = "Review must be less than 500 characters")
+	@Size(max = 100, message = "Review must be less than 100 characters")
 //	@Column(nullable = false)
 	private String review;
 

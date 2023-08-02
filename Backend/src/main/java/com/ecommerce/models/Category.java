@@ -1,6 +1,6 @@
 package com.ecommerce.models;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +34,6 @@ public class Category {
 
 	@Column(nullable = false)
 	@OneToMany(mappedBy = "category")
-	private List<Products> products;
+	private Set<Products> products;
 
 }

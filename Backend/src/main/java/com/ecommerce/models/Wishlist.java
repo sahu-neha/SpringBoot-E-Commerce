@@ -1,6 +1,6 @@
 package com.ecommerce.models;
 
-import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,5 +30,5 @@ public class Wishlist {
 
 	@OneToMany(mappedBy = "wishlist")
 	@Column(nullable = false)
-	private List<Products> products;
+	private Set<Products> products;
 }
