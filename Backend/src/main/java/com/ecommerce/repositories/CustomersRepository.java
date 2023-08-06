@@ -6,4 +6,6 @@ import com.ecommerce.models.Customers;
 
 public interface CustomersRepository extends JpaRepository<Customers, Long> {
 
+  Customers findByEmail(String email);
+
 }
